@@ -183,7 +183,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
 
         IUIManager.instance.setFullScreenMode(activity, getManagedComponent().view.getView(), appSettings.fullScreen);
 
-        createAction(R.id.mainmenu_search).putValue("view", activity.getSearchControls());
+        //createAction(R.id.mainmenu_search).putValue("view", activity.getSearchControls());
         createAction(R.id.actions_toggleTouchManagerView).putValue("view", activity.getTouchView());
         createAction(R.id.mainmenu_force_portrait).putValue("mode", BookRotationType.PORTRAIT);
         createAction(R.id.mainmenu_force_landscape).putValue("mode", BookRotationType.LANDSCAPE);
@@ -715,7 +715,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
 
         if (getManagedComponent().getSearchControls().getVisibility() == View.VISIBLE) {
             if (action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK) {
-                toggleControls(getAction(R.id.mainmenu_search));
+                //toggleControls(getAction(R.id.mainmenu_search));
                 return true;
             }
             return false;

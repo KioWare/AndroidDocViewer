@@ -342,7 +342,7 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
         final boolean splitSupported = ds.isFeatureSupported(CodecFeatures.FEATURE_SPLIT_SUPPORT);
         ActionMenuHelper.setMenuItemVisible(menu, splitSupported, R.id.mainmenu_splitpages);
 
-        final MenuItem navMenu = menu.findItem(R.id.mainmenu_nav_menu);
+        /*final MenuItem navMenu = menu.findItem(R.id.mainmenu_nav_menu);
         if (navMenu != null) {
             final SubMenu subMenu = navMenu.getSubMenu();
             subMenu.removeGroup(R.id.actions_goToBookmarkGroup);
@@ -351,7 +351,7 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
                     addBookmarkMenuItem(subMenu, b);
                 }
             }
-        }
+        }*/
 
     }
 
