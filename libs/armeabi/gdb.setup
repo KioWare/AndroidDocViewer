@@ -1,0 +1,2 @@
+set solib-search-path ./obj/local/armeabi
+directory C:/android-ndk-r8e/platforms/android-14/arch-arm/usr/include C:/android-ndk-r8e/sources/cxx-stl/system/include jni/djvu jni/ebookdroid/../mupdf/mupdf/fitz jni/ebookdroid/../mupdf/mupdf/pdf jni/ebookdroid/../mupdf/mupdf/xps jni/ebookdroid/../djvu jni/ebookdroid/../hqx jni/jpeg jni/mupdf/freetype-overlay/include jni/mupdf/freetype/include jni/mupdf/../jpeg jni/mupdf/jbig2dec jni/mupdf/openjpeg jni/mupdf/mupdf/fitz jni/mupdf/mupdf/pdf jni/mupdf/mupdf/xps jni/mupdf/mupdf/generated
