@@ -11,11 +11,11 @@
         android:alphabeticShortcut="g"
         android:icon="@drawable/viewer_menu_goto"
         android:title="@string/menu_goto_page"/-->
-    <item
+    <!--item
         android:id="@+id/mainmenu_search"
         android:alphabeticShortcut="r"
         android:icon="@drawable/viewer_menu_searchtext"
-        android:title="@string/menu_searchtext"/>
+        android:title="@string/menu_searchtext"/-->
     <item
         android:id="@+id/mainmenu_outline"
         android:alphabeticShortcut="o"
