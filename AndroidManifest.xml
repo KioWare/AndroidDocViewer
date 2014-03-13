@@ -32,6 +32,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <data android:mimeType="application/octet-stream" />
                 <data android:mimeType="application/pdf" />
                 <data android:mimeType="image/djvu" />
                 <data android:mimeType="image/vnd.djvu" />

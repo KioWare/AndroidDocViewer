@@ -53,7 +53,9 @@ fz_open_document_with_stream(fz_context *ctx, char *magic, fz_stream *stream)
 	if (!strcmp(magic, "xps") || !strcmp(magic, "application/vnd.ms-xpsdocument"))
 		return (fz_document*) xps_open_document_with_stream(ctx, stream);
 	if (!strcmp(magic, "pdf") || !strcmp(magic, "application/pdf"))
-		return (fz_document*) pdf_open_document_with_stream(ctx, stream);
+			return (fz_document*) pdf_open_document_with_stream(ctx, stream);
+	if (!strcmp(magic, "pdf") || !strcmp(magic, "application/octet-stream"))
+			return (fz_document*) pdf_open_document_with_stream(ctx, stream);
 
 	/* last guess: pdf */
 	return (fz_document*) pdf_open_document_with_stream(ctx, stream);

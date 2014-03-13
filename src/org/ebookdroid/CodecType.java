@@ -18,7 +18,7 @@ import org.emdev.utils.LengthUtils;
 
 public enum CodecType {
 
-    PDF(PdfContext.class, true, Arrays.asList("pdf"), Arrays.asList("application/pdf")),
+    PDF(PdfContext.class, true, Arrays.asList("pdf"), Arrays.asList("application/pdf", "application/octet-stream")),
 
     DJVU(DjvuContext.class, false, Arrays.asList("djvu", "djv"), Arrays.asList("image/djvu", "image/vnd.djvu", "image/x-djvu")),
 
