@@ -1,0 +1,10 @@
+#labels Featured
+
+= KioWare PDF Viewer 1.0 =
+
+ * Based on EBookDroid v1.6.2
+
+== Features ==
+
+* Modified viewer for kiosk use
+* Added Device Administator option
