@@ -773,13 +773,16 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
 
     @ActionMethod(ids = R.id.actions_showSaveDlg)
     public void showSaveDlg(final ActionEx action) {
-        final FolderDlg dlg = new FolderDlg(this);
-        dlg.show(BaseDroidApp.EXT_STORAGE, R.string.confirmclose_title, R.id.actions_doSaveAndClose, R.id.actions_doClose);
+        //Disable save dialog - KioWare
+        /*final FolderDlg dlg = new FolderDlg(this);
+        dlg.show(BaseDroidApp.EXT_STORAGE, R.string.confirmclose_title, R.id.actions_doSaveAndClose, R.id.actions_doClose);*/
+        doClose(action);
     }
 
     @ActionMethod(ids = R.id.actions_doSaveAndClose)
     public void doSaveAndClose(final ActionEx action) {
-        final File targetFolder = action.getParameter(FolderDlg.SELECTED_FOLDER);
+        //Disable saving - KioWare
+        /*final File targetFolder = action.getParameter(FolderDlg.SELECTED_FOLDER);
         final File source = new File(m_fileName);
         final File target = new File(targetFolder, source.getName());
 
@@ -789,7 +792,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
             CacheManager.copy(source.getAbsolutePath(), target.getAbsolutePath(), true);
         } catch (final IOException ex) {
             ex.printStackTrace();
-        }
+        }*/
 
         doClose(action);
     }
@@ -803,20 +806,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
             CacheManager.clear(m_fileName);
         }
         SettingsManager.releaseBookSettings(id, bookSettings);
-        
-        try {
-            Intent i = new Intent();
-            i.setComponent(new ComponentName("com.adsi.kioware.client.mobile.app", "com.adsi.kioware.client.mobile.app.BrowserMain"));
-            i.addCategory(Intent.CATEGORY_DEFAULT);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.putExtra("com.adsi.kioware.client.mobile.app.quickBootEnabled", 2);
-            getManagedComponent().startActivity(i);
-        }
-        catch(Exception e) {
-            Log.e("KioWare", "Failed to start KioWare", e);
-        }
-        
-        getManagedComponent().finish();
+        getManagedComponent().finishAndRemoveTask();
     }
 
     /**

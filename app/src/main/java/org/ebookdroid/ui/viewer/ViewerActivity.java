@@ -16,8 +16,10 @@ import org.ebookdroid.ui.viewer.views.ManualCropView;
 import org.ebookdroid.ui.viewer.views.PageViewZoomControls;
 import org.ebookdroid.ui.viewer.views.SearchControls;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -26,6 +28,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.SubMenu;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -155,6 +158,7 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
     @Override
     protected void onPauseImpl(final boolean finishing) {
         IUIManager.instance.onPause(this);
+        getController().doClose(null);
     }
 
     /**
@@ -177,6 +181,19 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
         if (hasFocus && this.view != null) {
             IUIManager.instance.setFullScreenMode(this, this.view.getView(), AppSettings.current().fullScreen);
         }
+    }
+
+    private long lastTouchTime = 0;
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        long now = SystemClock.elapsedRealtime();
+        if (now - lastTouchTime > 999) {
+            lastTouchTime = now;
+            Intent i = new Intent("com.adsi.kioware.client.mobile.app.external");
+            i.putExtra("com.adsi.kioware.client.mobile.app.external.extra.setuserpresent", true);
+            sendBroadcast(i);
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
     public TouchManagerView getTouchView() {
