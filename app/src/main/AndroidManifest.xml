@@ -24,6 +24,7 @@
         <activity
             android:name="org.ebookdroid.ui.viewer.ViewerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:excludeFromRecents="true"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
