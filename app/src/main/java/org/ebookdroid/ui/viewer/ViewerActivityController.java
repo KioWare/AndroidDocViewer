@@ -806,7 +806,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
             CacheManager.clear(m_fileName);
         }
         SettingsManager.releaseBookSettings(id, bookSettings);
-        getManagedComponent().finishAndRemoveTask();
+        getManagedComponent().finish();
     }
 
     /**
