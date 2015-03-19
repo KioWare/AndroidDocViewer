@@ -158,7 +158,6 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
     @Override
     protected void onPauseImpl(final boolean finishing) {
         IUIManager.instance.onPause(this);
-        getController().doClose(null);
     }
 
     /**
