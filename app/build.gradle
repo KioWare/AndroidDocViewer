@@ -2,36 +2,38 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        keystore {
-            keyAlias System.getenv("KeyAlias")
-            keyPassword System.getenv("KeyPassword")
-            storeFile file(System.getenv("StoreFile"))
-            storePassword System.getenv("StorePassword")
+        config {
+            def Properties localProps = new Properties()
+            localProps.load(new FileInputStream(file('../local.properties')))
+            storeFile file(localProps["storefile"])
+            keyAlias localProps["keyalias"]
+            storePassword localProps["storepassword"]
+            keyPassword localProps["keypassword"]
         }
     }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.adsi.kioware.client.mobile.pdf.app"
         minSdkVersion 14
         targetSdkVersion 16
-        versionCode computeVersionCode()
         versionName "1.1"
+        versionCode computeVersionCode()
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
-            minifyEnabled false
-            signingConfig signingConfigs.keystore
+            signingConfig signingConfigs.config
         }
         debug {
-            signingConfig signingConfigs.keystore
+            signingConfig signingConfigs.config
         }
     }
-
     sourceSets {
         main.jni.srcDirs = []
         main.jniLibs.srcDir 'src/main/libs'
+    }
+    productFlavors {
     }
 }
 
