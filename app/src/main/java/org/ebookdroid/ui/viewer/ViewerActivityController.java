@@ -905,7 +905,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
         IUIManager.instance.invalidateOptionsMenu(getManagedComponent());
     }
 
-    final class BookLoadTask extends BaseAsyncTask<String, Throwable> implements IProgressIndicator {
+    final class BookLoadTask extends BaseAsyncTask<Object, Throwable> implements IProgressIndicator {
 
         private final String m_password;
 
@@ -915,7 +915,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
         }
 
         @Override
-        protected Throwable doInBackground(final String... params) {
+        protected Throwable doInBackground(final Object... params) {
             LCTX.d("BookLoadTask.doInBackground(): start");
             try {
                 final File cached = scheme.loadToCache(intent.getData(), this);
