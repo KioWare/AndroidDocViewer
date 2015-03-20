@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        keystore {
+            keyAlias getKeyAlias()
+            keyPassword getKeyPassword()
+            storeFile getStoreFile()
+            storePassword getStorePassword()
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
 
@@ -15,6 +23,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.keystore
+        }
+        debug {
+            signingConfig signingConfigs.keystore
         }
     }
 
@@ -29,6 +41,38 @@ def computeVersionCode() {
         return Integer.parseInt(project.myVersionCode)
     } else {
         return 10
+    }
+}
+
+def getKeyAlias() {
+    if (project.hasProperty('myKeyAlias')) {
+        return project.myKeyAlias
+    } else {
+        return ''
+    }
+}
+
+def getKeyPassword() {
+    if (project.hasProperty('myKeyPassword')) {
+        return project.myKeyPassword
+    } else {
+        return ''
+    }
+}
+
+def getStoreFile() {
+    if (project.hasProperty('myStoreFile')) {
+        return file(project.myStoreFile)
+    } else {
+        return file('')
+    }
+}
+
+def getStorePassword() {
+    if (project.hasProperty('myStorePassword')) {
+        return project.myStorePassword
+    } else {
+        return ''
     }
 }
 
