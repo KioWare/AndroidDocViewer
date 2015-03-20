@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         keystore {
-            keyAlias getKeyAlias()
-            keyPassword getKeyPassword()
-            storeFile getStoreFile()
-            storePassword getStorePassword()
+            keyAlias System.getenv("KeyAlias")
+            keyPassword System.getenv("KeyPassword")
+            storeFile file(System.getenv("StoreFile"))
+            storePassword System.getenv("StorePassword")
         }
     }
     compileSdkVersion 21
@@ -41,38 +41,6 @@ def computeVersionCode() {
         return Integer.parseInt(project.myVersionCode)
     } else {
         return 10
-    }
-}
-
-def getKeyAlias() {
-    if (project.hasProperty('myKeyAlias')) {
-        return project.myKeyAlias
-    } else {
-        return ''
-    }
-}
-
-def getKeyPassword() {
-    if (project.hasProperty('myKeyPassword')) {
-        return project.myKeyPassword
-    } else {
-        return ''
-    }
-}
-
-def getStoreFile() {
-    if (project.hasProperty('myStoreFile')) {
-        return file(project.myStoreFile)
-    } else {
-        return file('')
-    }
-}
-
-def getStorePassword() {
-    if (project.hasProperty('myStorePassword')) {
-        return project.myStorePassword
-    } else {
-        return ''
     }
 }
 
